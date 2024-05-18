@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import imgUrl from '../assets/logoRounded.png';
 
-const Inicio = () => {
+export const Inicio: React.FC = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
   //const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -124,7 +124,7 @@ const Inicio = () => {
                 <p>Nombre de la mascota: {post.pets[0].namePet}</p>
                 <p>Descripción: {post.pets[0].description}</p>
                 <img
-                  src={`./img/${post.pets[0].image}`}
+                  src={`/img/${post.pets[0].image}`}
                   width={150}
                   height={150}
                   alt="Imagen de la mascota"
@@ -137,5 +137,3 @@ const Inicio = () => {
     </>
   );
 };
-
-export default Inicio;
