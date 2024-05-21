@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   @font-face {
     font-family: 'Nunito';
@@ -41,4 +42,11 @@
   align-items: center;
   justify-content: center;
   padding-top: 1%;
+}
+
+.centradito {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

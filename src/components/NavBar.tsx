@@ -36,7 +36,7 @@ export const NavBar: React.FC = () => {
             />
           </NavButton>
         </div>
-
+        <div className="loader"></div>
         {/* Desktop Navigation */}
         <ul className='hidden md:flex font-semibold justify-between'>
           {navItems.map(item => (

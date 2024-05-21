@@ -20,12 +20,12 @@ export const Inicio: React.FC = () => {
           </div>
           <div className='md:w-2/3'>
             <h1 className='text-2xl font-bold mb-4 text-center'>
-              ¡Bienvenido a Perdidos y Encontrados Mascotas!
+              ¡Bienvenidos a Lost & Founds Pets!
             </h1>
             <p>
               Estás en el lugar indicado si estás buscando a tu compañero peludo
               perdido o si querés ayudar a reunir a una mascota con su familia.
-              En Perdidos y Encontrados Mascotas, estamos dedicados a conectar a
+              En Lost & Founds Pets!, estamos dedicados a conectar a
               las mascotas perdidas con sus dueños amorosos. Nuestro objetivo es
               proporcionar un espacio seguro y confiable donde puedas compartir
               información sobre mascotas perdidas y encontradas en tu comunidad.
@@ -70,8 +70,8 @@ export const Inicio: React.FC = () => {
         <p>
           Sumate a nuestra comunidad de amantes de los animales y juntos
           trabajaremos para garantizar que cada mascota reciba el amor y el
-          cuidado que merece. En Perdidos y Encontrados Mascotas, creemos que
-          cada mascota perdida tiene un camino de regreso a casa. ¡Sumate y
+          cuidado que merece. En Lost & Founds Pets!, creemos que
+          cada mascota perdida tiene un camino de regreso a casa. ¡Súmate y
           ayudemos a que eso suceda!
         </p>
       </div>

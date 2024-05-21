@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
         <div className='flex justify-between items-center h-20 max-w-[1240px] mx-auto px-4'>
           {/* Logo */}
           <div className='text-orange-500 footercenter'>
-            <div className="loader"></div>
+            
             Sitio creado por &#128571; Vicky &#128571; Lorena &#128570; Jorge
             <div className="loader"></div>
 
