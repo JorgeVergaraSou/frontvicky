@@ -19,7 +19,8 @@ export const NavBar: React.FC = () => {
     { id: 2, text: 'Nosotros', url: routes.about.url },
     { id: 3, text: 'Contacto', url: routes.contact.url },
     { id: 4, text: 'Registro', url: routes.registration.url },
-    { id: 5, text: 'Login', url: routes.login.url }
+    { id: 5, text: 'Login', url: routes.login.url },
+    { id: 6, text: 'Nueva Mascota', url: routes.nuevamascota.url}
   ]
 
   return (

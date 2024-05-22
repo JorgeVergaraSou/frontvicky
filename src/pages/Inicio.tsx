@@ -1,11 +1,7 @@
 //import { useEffect, useState } from 'react'
 import imgUrl from '../assets/logoRounded.png';
 
-export const Inicio: React.FC = () => {
-
-  
-
- 
+export const Inicio: React.FC = () => { 
 
   return (
     <>

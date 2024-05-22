@@ -2,9 +2,11 @@ import { Layout } from '../components/components'
 import { basePathName, routes } from '../constants'
 import {
   Contacto,
+  CrearMascota,
   Inicio,
   Login,
   Mascotas,
+  
   Nosotros,
   Registro
 } from '../pages/pages'
@@ -51,6 +53,15 @@ const LFRoutes: RoutesType[] = [
     ),
     path: routes.pets.url,
     key: routes.pets.url
+  },
+  {
+    element: (
+      <Layout>
+        <CrearMascota />
+      </Layout>
+    ),
+    path: routes.nuevamascota.url,
+    key: routes.nuevamascota.url
   },
   {
     element: (

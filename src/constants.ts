@@ -11,6 +11,9 @@ export const routes = {
   login: {
     url: '/login'
   },
+  nuevamascota: {
+    url: '/nuevamascota'
+  },
   pets: {
     url: '/mascotas'
   },
