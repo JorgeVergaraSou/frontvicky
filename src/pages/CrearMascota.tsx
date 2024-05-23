@@ -73,11 +73,12 @@ export const CrearMascota: React.FC = () => {
 
   return (
     <>
-
+<h2>Agregar mascota</h2>
 <form onSubmit={handleSubmit}>
+Nombre de tú mascota
          <input
            type="text"
-           placeholder="test"
+           placeholder=""
            name="namePets"
            className="form-control mb-2"
            value={namePets}
@@ -99,23 +100,24 @@ export const CrearMascota: React.FC = () => {
                         AVE
                     </option>
                 </select>
-
+Edad
          <input
            type="number"
-           placeholder="test@test.com"
+           placeholder=""
            name="age"
            className="form-control mb-2"
            value={age}
            onChange={(event) => setAge(event.target.value)}
          />
+         Descripción
           <textarea
-                    placeholder="Contenido"
+                    placeholder=""
                     name="content"
                     className="form-control mb-2"
                     value={description}
                     onChange={(event) => setDescription(event.target.value)}
                 />
-
+Fotito de tu amigo de 4 patas
 <div className="mb-3">
   <label htmlFor="formFile" >Default file input example</label>
   <input className="form-control" type="file" id="formFile" />
