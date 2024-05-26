@@ -6,7 +6,7 @@ import {
   Inicio,
   Login,
   Mascotas,
-  
+  NuevoPost,  
   Nosotros,
   Registro
 } from '../pages/pages'
@@ -62,6 +62,15 @@ const LFRoutes: RoutesType[] = [
     ),
     path: routes.nuevamascota.url,
     key: routes.nuevamascota.url
+  },
+  {
+    element: (
+      <Layout>
+        <NuevoPost />
+      </Layout>
+    ),
+    path: routes.nuevopost.url,
+    key: routes.nuevopost.url
   },
   {
     element: (
