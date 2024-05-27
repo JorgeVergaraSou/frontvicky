@@ -74,7 +74,7 @@ export const CrearMascota: React.FC = () => {
 
   return (
     <>
-
+<h3>Ingresa los datos de tu mascota</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

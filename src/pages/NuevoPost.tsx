@@ -10,7 +10,7 @@ export const NuevoPost: React.FC = () => {
     const [errors, setErrors] = useState<string[]>([]);
     const [message, setMessage] = useState<string[]>([]);
     const [title, setTitle] = useState<string>("");
-    const [content, setContent] = useState<string>("Contenido");
+    const [content, setContent] = useState<string>("");
     const [postType, setPostType] = useState<number>(0); // Estado para el valor del select
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false); // Estado para controlar el modal
     const [postId, setPostId] = useState<number | null>(null); // Estado para guardar el ID del post creado
