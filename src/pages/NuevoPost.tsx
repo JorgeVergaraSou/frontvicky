@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CrearMascota from './CrearMascota_old1'; // Asumiendo que CrearMascota está en el mismo directorio
+import CrearMascota from './CrearMascota'; // Asumiendo que CrearMascota está en el mismo directorio
 import Modal from 'react-modal';
 
 // Inicializar react-modal con el elemento raíz de la aplicación (si no se ha hecho ya en otro lugar)
@@ -11,7 +11,7 @@ export const NuevoPost: React.FC = () => {
     const [message, setMessage] = useState<string[]>([]);
     const [title, setTitle] = useState<string>("");
     const [content, setContent] = useState<string>("");
-    const [postType, setPostType] = useState<number>(0); // Estado para el valor del select
+    const [typePost, setTypePost] = useState<number>(0); // Estado para el valor del select
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false); // Estado para controlar el modal
     const [postId, setPostId] = useState<number | null>(null); // Estado para guardar el ID del post creado
 
@@ -26,7 +26,7 @@ export const NuevoPost: React.FC = () => {
             newErrors.push("El contenido no puede estar vacío");
         }
 
-        if (postType === 0) {
+        if (typePost === 0) {
             newErrors.push("Debe seleccionar un tipo de publicación");
         }
 
@@ -48,11 +48,12 @@ export const NuevoPost: React.FC = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlkVXNlciI6MiwiaWF0IjoxNzE2ODI0NzY3LCJleHAiOjE3MTY4MjgzNjd9.HSjMQBiyKeoMHKIg5_6KutKTfM98wOdnFqvvICGAYt0`,
                 },
                 body: JSON.stringify({
                     title,
                     content,
-                    postType, // Incluir el valor del select en el cuerpo de la solicitud
+                    typePost, // Incluir el valor del select en el cuerpo de la solicitud
                 }),
             }
         );
@@ -71,7 +72,7 @@ export const NuevoPost: React.FC = () => {
             return;
         }
 
-        setPostId(responseAPI.id); // Asumiendo que el ID del post creado está en responseAPI.id
+        setPostId(responseAPI.idPost); // Asumiendo que el ID del post creado está en responseAPI.id
         setModalIsOpen(true); // Abrir el modal al crear el post
     };
 
@@ -83,8 +84,8 @@ export const NuevoPost: React.FC = () => {
                     <span>Tipo de publicación</span>
                     <select
                         className="form-select"
-                        value={postType} // Establecer el valor del select al estado
-                        onChange={(event) => setPostType(Number(event.target.value))} // Actualizar el estado cuando se cambie el select
+                        value={typePost} // Establecer el valor del select al estado
+                        onChange={(event) => setTypePost(Number(event.target.value))} // Actualizar el estado cuando se cambie el select
                     >
                         <option value={0}>SELECCIONE OPCIÓN</option>
                         <option value={1}>MASCOTA PERDIDA</option>
