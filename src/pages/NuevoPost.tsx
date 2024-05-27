@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CrearMascota from './CrearMascota'; // Asumiendo que CrearMascota está en el mismo directorio
+import CrearMascota from './CrearMascota_old1'; // Asumiendo que CrearMascota está en el mismo directorio
 import Modal from 'react-modal';
 
 // Inicializar react-modal con el elemento raíz de la aplicación (si no se ha hecho ya en otro lugar)

@@ -1,83 +1,155 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-const CrearMascota: React.FC<{ postId: number | null }> = ({ postId }) => {
-    const [name, setName] = useState<string>("");
-    const [breed, setBreed] = useState<string>("");
-    const [age, setAge] = useState<string>("");
-    const [imageFile, setImageFile] = useState<File | null>(null); // Cambiar el estado para almacenar el archivo en lugar del nombre
+export const CrearMascota: React.FC = () => {
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+  const [errors, setErrors] = useState<string[]>([]);
+  const [message, setMessage] = useState<string[]>([]);
+  //const [loading, setLoading] = useState(true);
+  //const [error, setError] = useState<string | null>(null);
+  const [namePet, setNamePet] = useState<string>("");
+  const [pet, setPets] = useState<string>("");
+  const [age, setAge] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  //const [imageFilename, setImageFilename] = useState<string>("");
 
-        if (postId === null) {
-            console.error("No se puede crear la mascota sin un postId");
-            return;
-        }
 
-        if (!imageFile) {
-            console.error("La imagen es requerida");
-            return;
-        }
 
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('breed', breed);
-        formData.append('age', age);
-        formData.append('image', imageFile); // Agregar el archivo de imagen en lugar del nombre
-        formData.append('postId', postId.toString());
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setErrors([]);
 
-        const response = await fetch(`http://localhost:3006/api/v1/pets/createPet`, {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (response.ok) {
-            console.log("Mascota creada exitosamente");
-        } else {
-            console.error("Error al crear la mascota");
-        }
-    };
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Nombre:</label>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                />
-            </div>
-            <div>
-                <label>Raza:</label>
-                <input
-                    type="text"
-                    value={breed}
-                    onChange={(event) => setBreed(event.target.value)}
-                />
-            </div>
-            <div>
-                <label>Edad:</label>
-                <input
-                    type="text"
-                    value={age}
-                    onChange={(event) => setAge(event.target.value)}
-                />
-            </div>
-            <div>
-                <label>Imagen:</label>
-                <input
-                    type="file"
-                    onChange={(event) => {
-                        if (event.target.files && event.target.files.length > 0) {
-                            setImageFile(event.target.files[0]);
-                        }
-                    }}
-                />
-            </div>
-            <button type="submit">Crear Mascota</button>
-        </form>
+    const responseNewPet = await fetch(`http://localhost:3006/api/v1/pets`,
+      // `${process.env.REACT_APP_BACKEND_URL}/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpZFVzZXIiOjEsImlhdCI6MTcxNjY3Nzc1MSwiZXhwIjoxNzE2NjgxMzUxfQ.zxCxtJHTaFeTNDyPIzN_dTNl_5Bdrtn9ydeZU8pvcvY`,
+        },
+        body: JSON.stringify({
+          namePet,
+          pet,
+          age,
+          description,
+          //  imageFilename,
+        }),
+      }
     );
-};
 
-export default CrearMascota;
+    const responseAPI = await responseNewPet.json();
+
+    if (!responseNewPet.ok) {
+      // Verificar si responseAPI.message es un string
+      console.log(responseAPI.message);
+      if (typeof responseAPI.message === 'string') {
+        setMessage(responseAPI.message.split(","));
+      } else if (Array.isArray(responseAPI.message)) {
+        // Si responseAPI.message es un array, asumimos que ya contiene mensajes separados
+        setMessage(responseAPI.message);
+      } else {
+        // Si responseAPI.message es un objeto, tratamos de obtener sus valores
+        setMessage(Object.values(responseAPI.message));
+      }
+      return;
+    }
+    /*
+    const responseNextAuth = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (responseNextAuth?.error) {
+      setErrors(responseNextAuth.error.split(","));
+      return;
+    }
+
+    if (status === "loading") {
+      return <div className="loader-container"><div className="loader"></div> <div className="loader2"></div></div>;
+    }
+
+    router.push("/dashboard");
+    */
+  };
+
+  return (
+    <>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="test"
+          name="namePets"
+          className="form-control mb-2"
+          value={namePet}
+          onChange={(event) => setNamePet(event.target.value)}
+        />
+
+        <span>Tipo de mascota</span>
+        <select className="form-select" onChange={(event) => setPets(event.target.value)}>
+          <option value={0}>
+            SELECCIONE OPCIÓN
+          </option>
+          <option value={1}>
+            GATO
+          </option>
+          <option value={2}>
+            PERRO
+          </option>
+          <option value={3}>
+            AVE
+          </option>
+        </select>
+
+        <input
+          type="number"
+          placeholder="test@test.com"
+          name="age"
+          className="form-control mb-2"
+          value={age}
+          onChange={(event) => setAge(event.target.value)}
+        />
+        <textarea
+          placeholder="Contenido"
+          name="content"
+          className="form-control mb-2"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+        />
+
+        <div className="mb-3">
+          <label htmlFor="formFile" >Default file input example</label>
+          <input className="form-control" type="file" id="formFile" />
+        </div>
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+        >
+          crear mascota
+        </button>
+      </form>
+
+      {message.length > 0 && (
+        <div className="alert alert-danger mt-2">
+          <ul className="mb-0">
+            {message.map((msg) => (
+              <li key={msg}>{msg}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {errors.length > 0 && (
+        <div className="alert alert-danger mt-2">
+          <ul className="mb-0">
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+    </>
+  )
+}
