@@ -4,7 +4,7 @@ interface Pet {
     pet: string;
     age: number;   
     description: string;
-    image: string;
+    imageFilename: string;
     createdAt: Date;
     updateAt: Date;
     softDeleteDat: Date;    

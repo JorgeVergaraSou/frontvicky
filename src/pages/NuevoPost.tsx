@@ -48,7 +48,7 @@ export const NuevoPost: React.FC = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlkVXNlciI6MiwiaWF0IjoxNzE2ODI0NzY3LCJleHAiOjE3MTY4MjgzNjd9.HSjMQBiyKeoMHKIg5_6KutKTfM98wOdnFqvvICGAYt0`,
+                    authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlkVXNlciI6MiwiaWF0IjoxNzE2OTA2ODA4LCJleHAiOjE3MTY5MTA0MDh9.aW9KV2KJxVPBKdu5N4ORTix5-eoucMAtbMlj28ET6ig`,
                 },
                 body: JSON.stringify({
                     title,

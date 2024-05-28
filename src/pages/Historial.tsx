@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
+//import { Card } from '../components/components'
+
+
 
 export const Mascotas: React.FC = () => {
 
   const [posts, setPosts] = useState<Post[] | null>(null);
- 
+  //const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

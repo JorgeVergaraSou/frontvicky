@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-interface Breed {
-  idBreed: number;
-  nameBreed: string;
-}
-
-const CrearMascota: React.FC<{ postId: number | null }> = ({ postId }) => {
+export const CrearMascota: React.FC<{ postId: number | null }> = ({ postId }) => {
   const [errors, setErrors] = useState<string[]>([]);
   const [message, setMessage] = useState<string[]>([]);
   const [namePets, setNamePets] = useState<string>("");
